@@ -1,9 +1,28 @@
 <script>
   import "./app.css";
+  import LinkSolid from "./assets/svgs/LinkSolid.svelte";
   import Footer from "./lib/Footer.svelte";
-  import { dataArray } from "./lib/helpers/constants";
+  import Dialog from "./lib/common/Dialog.svelte";
+  import {
+    ADD_PRODUCT_MODE,
+    EDIT_MODE,
+    dataArray,
+  } from "./lib/helpers/constants";
+
+  let dialog;
+  let productList = dataArray;
+  let mode = null;
+  // TODO: try setting this to a store
+  $: selectedProduct = null;
+
+  $: changeEditMode = () => (mode = EDIT_MODE);
+  $: changeAddProductMode = () => (mode = ADD_PRODUCT_MODE);
+  $: changeSelectedProduct = (selectedId) =>
+    (selectedProduct = productList.find(({ id }) => id === selectedId));
+  // (selectedProduct = productList.find(({ id }) => id === selectedId));
 </script>
 
+<Dialog bind:dialog {mode} {selectedProduct} />
 <header class="px-6 pt-6 w-screen">
   <div class="flex flex-row justify-between items-center">
     <div>
@@ -19,7 +38,11 @@
     </div>
     <div>
       <button
-        class="bg-emerald-600 py-2 px-5 rounded-lg font-medium text-slate-100"
+        class="bg-emerald-600 border-4 border-emerald-700 py-2 px-5 rounded-lg font-medium text-slate-50 focus:bg-slate-50 focus:text-slate-500 active:bg-emerald-800 focus:border-4 focus:border-emerald-600"
+        on:click={() => {
+          dialog.showModal();
+          changeAddProductMode();
+        }}
       >
         Add Product
       </button>
@@ -28,7 +51,7 @@
 </header>
 <main class="p-6">
   <div class="grid grid-cols-2 gap-4">
-    {#each dataArray as { name, image, priority, furnitureType, roomSpace, purchaseLocation, total, colorWay, brand, quantity }}
+    {#each productList as { name, hyperlink, image, priority, furnitureType, roomSpace, purchaseLocation, total, colorWay, brand, quantity, id } (id)}
       <div
         class="bg-slate-100 rounded-lg flex border-4 border-slate-300 h-full items-center"
       >
@@ -37,8 +60,30 @@
         </div>
         <div class="w-1/2 p-6">
           <div class="pb-4">
-            <h2 class="font-bold text-lg">{`${name} ${furnitureType}`}</h2>
-            <p class="text-slate-600 text-sm">{purchaseLocation}</p>
+            <div class="flex justify-between items-center">
+              <div>
+                <div class="flex justify-start items-center">
+                  <h2 class="font-bold text-lg">
+                    {`${name} ${furnitureType}`}
+                  </h2>
+                  <a href={hyperlink} target="_blank" class="pl-3">
+                    <LinkSolid />
+                  </a>
+                </div>
+                <p class="text-slate-600 text-sm">{purchaseLocation}</p>
+              </div>
+
+              <button
+                on:click={() => {
+                  dialog.showModal();
+                  changeEditMode();
+                  changeSelectedProduct(id);
+                }}
+                class="font-light text-slate-700 text-sm flex justify-between px-2 py-1 border-4 border-slate-300 rounded-lg focus:border-emerald-600 active:border-emerald-800"
+              >
+                Edit
+              </button>
+            </div>
           </div>
           <div class="grid grid-cols-2 gap-2">
             <div>

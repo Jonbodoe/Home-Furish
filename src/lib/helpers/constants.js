@@ -5,6 +5,32 @@ export const LOW = "Low";
 export const MEDIUM = "Medium";
 export const HIGH = "High";
 
+export const brandsList = [
+  {
+    id: "ikea",
+    name: "Ikea",
+  },
+  {
+    id: "wayfair",
+    name: "Wayfair",
+  },
+  {
+    id: "west-elm",
+    name: "West Elm",
+  },
+  {
+    id: "target",
+    name: "Target",
+  },
+  {
+    id: "facebook-marketplace",
+    name: "Facebook Marketplace",
+  },
+];
+
+export const EDIT_MODE = "EDIT";
+export const ADD_PRODUCT_MODE = "ADD_PRODUCT_MODE";
+
 export const priorityList = [
   {
     id: LOW,
@@ -83,6 +109,7 @@ export const roomList = [
 // Fake Data Array
 export const dataArray = [
   {
+    id: 0,
     name: "LINANÄS",
     image: couch,
     priority: LOW,
@@ -91,10 +118,13 @@ export const dataArray = [
     colorWay: "#313131",
     brand: "Ikea",
     total: 350,
+    hyperlink:
+      "https://www.ikea.com/us/en/p/linanaes-sofa-vissle-dark-gray-80512247/",
     purchaseLocation: ONLINE_AND_IN_PERSON,
     quantity: 1,
   },
   {
+    id: 1,
     name: "LINANÄS",
     image: couch,
     priority: LOW,
@@ -103,10 +133,13 @@ export const dataArray = [
     colorWay: "#313131",
     brand: "Ikea",
     total: 350,
+    hyperlink:
+      "https://www.ikea.com/us/en/p/linanaes-sofa-vissle-dark-gray-80512247/",
     purchaseLocation: ONLINE_AND_IN_PERSON,
     quantity: 1,
   },
   {
+    id: 3,
     name: "LINANÄS",
     image: couch,
     priority: LOW,
@@ -115,10 +148,13 @@ export const dataArray = [
     colorWay: "#313131",
     brand: "Ikea",
     total: 350,
+    hyperlink:
+      "https://www.ikea.com/us/en/p/linanaes-sofa-vissle-dark-gray-80512247/",
     purchaseLocation: ONLINE_AND_IN_PERSON,
     quantity: 1,
   },
   {
+    id: 4,
     name: "LINANÄS",
     image: couch,
     priority: LOW,
@@ -127,10 +163,13 @@ export const dataArray = [
     colorWay: "#313131",
     brand: "Ikea",
     total: 350,
+    hyperlink:
+      "https://www.ikea.com/us/en/p/linanaes-sofa-vissle-dark-gray-80512247/",
     purchaseLocation: ONLINE_AND_IN_PERSON,
     quantity: 1,
   },
   {
+    id: 5,
     name: "LINANÄS",
     image: couch,
     priority: LOW,
@@ -139,6 +178,8 @@ export const dataArray = [
     colorWay: "#313131",
     brand: "Ikea",
     total: 350,
+    hyperlink:
+      "https://www.ikea.com/us/en/p/linanaes-sofa-vissle-dark-gray-80512247/",
     purchaseLocation: ONLINE_AND_IN_PERSON,
     quantity: 1,
   },

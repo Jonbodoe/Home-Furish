@@ -13,3 +13,15 @@
 html {
   position: relative;
 }
+
+a svg {
+  fill: #059669;
+}
+
+.input-container > * {
+  margin: 10px 0px;
+}
+
+dialog svg#home-furish-logo {
+  fill: #fff;
+}
